@@ -1,0 +1,62 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar" id="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <!-- Hamburger button right beside the navigation menu -->
+        <button class="hamburger-toggle" onclick="toggleSidebar()" aria-label="Toggle navigation">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+
+        <div class="top-row px-4">
+            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
+
+<script>
+    let isMinimized = false;
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        isMinimized = !isMinimized;
+        
+        if (isMinimized) {
+            sidebar.classList.add('sidebar-minimized');
+        } else {
+            sidebar.classList.remove('sidebar-minimized');
+        }
+    }
+
+    // Handle hover events for minimized sidebar
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.getElementById('sidebar');
+        
+        sidebar.addEventListener('mouseenter', function() {
+            if (isMinimized) {
+                sidebar.classList.add('sidebar-hover-expanded');
+            }
+        });
+        
+        sidebar.addEventListener('mouseleave', function() {
+            if (isMinimized) {
+                sidebar.classList.remove('sidebar-hover-expanded');
+            }
+        });
+    });
+</script>
