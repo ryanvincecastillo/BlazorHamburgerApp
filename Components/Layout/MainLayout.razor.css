@@ -74,7 +74,12 @@ main {
         text-overflow: ellipsis;
     }
 
+/* MOBILE: Hide the MainLayout hamburger button on small screens */
 @media (max-width: 640.98px) {
+    .hamburger-toggle {
+        display: none !important;
+    }
+    
     .top-row {
         justify-content: space-between;
     }
