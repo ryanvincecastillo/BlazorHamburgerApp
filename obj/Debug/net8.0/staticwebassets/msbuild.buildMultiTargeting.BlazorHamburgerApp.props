@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/BlazorHamburgerApp.props" />
-</Project>
